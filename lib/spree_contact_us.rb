@@ -1,4 +1,7 @@
 require 'net/http'
 require 'math_captcha'
 require 'spree_core'
+require 'simple_form'
+require 'ezcrypto'
+require 'cancan'
 require 'spree_contact_us/engine'

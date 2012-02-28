@@ -1,5 +1,5 @@
-Rails.application.routes.draw do
-  match '/contact-us' => 'inquiries#index', :as => :contact
+Spree::Core::Engine.routes.prepend do
+  match '/contato' => 'inquiries#index', :as => :contact
 
   resources :inquiries
 

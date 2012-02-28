@@ -1,0 +1,47 @@
+<% content_for :head do %>
+  <%#= formtastic_stylesheet_link_tag %>
+<% end %>
+
+<% content_for :page_title do %>
+  <%= @site_page.page_title rescue '' %>
+<% end %>
+<div class="spree-style container">
+	<div class="contact_form">
+		<div class="six columns instructions">
+			<p>
+				Quer falar com a gente? Preencha o formulário ao lado, que vamos te responder rapidinho.
+			</p>
+			<p>
+				Você também consegue se comunicar conosco pelos seguintes canais:
+			</p>
+			<ul>
+				<li>email: <%= mail_to "contato@aboutlove.com.br" %></li>
+				<li>tel: <%= link_to "(11) 9424-5252", "tel:1194245252" %></li>
+			</ul>
+		</div>
+		<div class="six columns">
+		  <%= simple_form_for @inquiry do |f| %>
+
+		  <% if @inquiry.errors.any? %>
+		    <div id="error_explanation">
+		      <h2><%= pluralize(@inquiry.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+		      <ul>
+		      <% @inquiry.errors.full_messages.each do |msg| %>
+		        <li><%= msg %></li>
+		      <% end %>
+		      </ul>
+		    </div>
+		  <% end %>
+		
+				<%= f.input :name, :label => t(:your_name) %>
+				<%= f.input :email,:type => :email, :label => t(:your_email), :hint => t(:type_real_mail) %>
+				<%= f.input :message, :as => :text, :label => t(:message) %>
+		      <%#=  f.label :captcha_solution, "What is #{@inquiry.captcha.task}" %>
+		      <%#= f.text_field :captcha_solution, :required => true%>
+		      <%#= f.hidden_field :captcha_secret %>
+		    <p><%= f.submit t(:send_it) %></p>
+		  <% end %>
+		</div>
+	</div>
+</div>

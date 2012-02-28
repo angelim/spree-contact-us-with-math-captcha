@@ -1,5 +1,5 @@
-class Inquiry < ActiveRecord::Base
-  has_captcha
+class Spree::Inquiry < ActiveRecord::Base
+  # has_captcha
   validates :name ,:presence => true
   validates :email ,:presence => true
   validates :message ,:presence => true
@@ -8,7 +8,7 @@ class Inquiry < ActiveRecord::Base
 
 
   def deliver_notification_email
-    InquiryMailer.notification(self).deliver
+    Spree::InquiryMailer.notification(self).deliver
     # For delayed_job
     # InquiryMailer.send_later(:deliver_notification, self)
   end

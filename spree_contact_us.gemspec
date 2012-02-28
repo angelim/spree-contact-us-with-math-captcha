@@ -19,7 +19,8 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'spree_core', '>= 0.70.RC1'
   s.add_development_dependency 'rspec-rails'
-  s.add_dependency('formtastic')
+  s.add_dependency('simple_form')
   s.add_dependency('ezcrypto')
+  s.add_dependency('cancan')
 end
 

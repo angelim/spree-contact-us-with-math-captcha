@@ -1,9 +1,14 @@
-class InquiriesController < Spree::BaseController
+class Spree::InquiriesController < Spree::BaseController
   helper 'spree/base'
-  resource_controller
+  respond_to :html
+  def new
+    @inquiry = Spree::Inquiry.new
+
+    respond_with(@inquiry)
+  end
 
   def create
-    @inquiry = Inquiry.new(params[:inquiry])
+    @inquiry = Spree::Inquiry.new(params[:inquiry])
     respond_to do |format|
       if @inquiry.save
         flash[:notice] = t(:on_send_message)
